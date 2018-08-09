@@ -1,0 +1,35 @@
+{% macro render_input_field(field, glyph) %}
+<div class="form-group has-feedback {% if field.errors %}has-error{% endif %} {{ kwargs.pop('class_', '') }}">
+<!--<div class="form-group has-feedback">-->
+    {{ field(class_='form-control', **kwargs) }}
+    <!--<input class="form-control" placeholder="Email"  type="email">-->
+    <span class="glyphicon form-control-feedback {{glyph}}"></span>
+    {% if field.errors %}
+      {% for error in field.errors %}
+        <span class="help-block">{{error}}</span>
+      {% endfor %}
+    {% endif %}
+</div>
+
+{% endmacro %}
+
+{% macro render_checkbox(field, text) %}
+<div class="checkbox {% if field.errors %}has-error{% endif %}{{ kwargs.pop('class_', '') }}">
+    <label>
+      {{ field(**kwargs) }} {{field.label.text}}
+    </label>
+    {% if field.errors %}
+      {% for error in field.errors %}
+        <span class="help-block">{{error}}</span>
+      {% endfor %}
+    {% endif %}
+</div>
+{% endmacro %}
+
+{% macro render_field(field) %}
+  <p>{{ field(**kwargs)|safe }}</p>
+{% endmacro %}
+
+{% macro render_submit_button(field) %}
+    <button type="submit" class="btn {{ kwargs.pop('class_', '') }}">{{field.label.text}}</button>
+{% endmacro %}
