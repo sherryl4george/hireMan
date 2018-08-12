@@ -24,6 +24,8 @@ def bulkupload():
         temp = ''.join([uuid.uuid4().hex,file_extension])
         filename = files.save(FileStorage(form.file.data),name=secure_filename(temp))
         file_url = files.url(filename)
-        utils.process_bulkupload(filename,file_url)
+        print(filename)
+        utils.process_bulkupload('C:\\test.xlsx',file_url)
+
         return render_template('base.html')
     return render_template('bulkupload.html', title='New Hire - Bulk Upload', form=form)

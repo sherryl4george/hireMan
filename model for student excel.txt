@@ -20,5 +20,9 @@ orientation
 orientation_date
 orientation_time
 orientation_location
+Approved
 waiver
+proficiency
 international
+CBC
+
